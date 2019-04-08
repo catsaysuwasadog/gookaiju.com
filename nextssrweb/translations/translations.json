@@ -1,0 +1,11 @@
+{
+  "pmsg_footer_release": "当前 {{release_version}}. 根据 {{release_license}} 发布。",
+  "pmsg_mitlicense": "MIT 许可证",
+  "pmsg_aboutme": " 关于我",
+  "pmsg_quickLinks": "快速链接",
+  "pmsg_indexheadTitle": "gookaiju首页",
+  "headDescription": "gookaiju.com page for ch.iduosi",
+  "pages": {
+    "/getting-started": "Getting Started"
+  }
+}
