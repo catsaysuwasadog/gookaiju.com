@@ -6,10 +6,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import HomeFooter from 'modules/components/HomeFooter';
+import Footer from 'modules/components/indexLayout/Footer';
 import AppFrame from 'modules/components/indexLayout/AppFrame';
 import Link from 'modules/components/basecomponents/Link';
-import IndexHead from 'modules/components/IndexHead';
+import Header from 'modules/components/indexLayout/Header';
 import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
@@ -112,7 +112,7 @@ class HomePage extends React.Component {
     return (
       <AppFrame classes={{ drawer: classes.drawer }}>
         <div className={classes.root}>
-          <IndexHead />
+          <Header />
           <div className={classes.hero}>
             <Container maxWidth="md" className={classes.content}>
               <img src="/static/logo.png" alt="gookaiju.com logo" className={classes.logo} />
@@ -135,7 +135,7 @@ class HomePage extends React.Component {
               </div>
             </Container>
           </div>
-          <HomeFooter />
+          <Footer />
         </div>
       </AppFrame>
     );

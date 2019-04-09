@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import compose from 'modules/utils/compose';
 
-function IndexHead(props) {
+function Header(props) {
   const {
     t,
     description = t('headDescription'),
@@ -23,7 +23,7 @@ function IndexHead(props) {
   );
 }
 
-IndexHead.propTypes = {
+Header.propTypes = {
   description: PropTypes.string,
   router: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
@@ -37,4 +37,4 @@ export default compose(
     t: state.options.t,
     userLanguage: state.options.userLanguage,
   })),
-)(IndexHead);
+)(Header);

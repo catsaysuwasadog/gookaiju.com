@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Link from 'modules/components/Link';
+import Link from 'modules/components/basecomponents/Link';
 import compose from 'modules/utils/compose';
 
 const styles = theme => ({
@@ -30,7 +30,7 @@ const styles = theme => ({
   },
 });
 
-function HomeFooter(props) {
+function Footer(props) {
   const { classes, t } = props;
 
   return (
@@ -60,10 +60,7 @@ function HomeFooter(props) {
             replacement={{
               release_version: `v${process.env.LIB_VERSION}`,
               release_license: (
-                <Link
-                  color="inherit"
-                  href="https://github.com/LICENSE"
-                >
+                <Link color="inherit" href="https://github.com/LICENSE">
                   {t('pmsg_mitlicense')}
                 </Link>
               ),
@@ -77,7 +74,7 @@ function HomeFooter(props) {
   );
 }
 
-HomeFooter.propTypes = {
+Footer.propTypes = {
   classes: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
@@ -85,4 +82,4 @@ HomeFooter.propTypes = {
 export default compose(
   connect(state => ({ t: state.options.t })),
   withStyles(styles),
-)(HomeFooter);
+)(Footer);
