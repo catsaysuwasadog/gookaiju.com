@@ -1,16 +1,11 @@
-import 'src/modules/components/bootstrap';
+import 'modules/components/bootstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import HomeFooter from 'src/modules/components/HomeFooter';
-import AppFrame from 'src/modules/components/AppFrame';
-import Link from 'src/modules/components/Link';
-import Head from 'src/modules/components/Head';
-import compose from 'src/modules/utils/compose';
+import AppFrame from 'modules/components/otherLayout/AppFrame';
+import NormalHead from 'modules/components/NormalHead';
+import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
 
@@ -105,7 +100,7 @@ class HomePage extends React.Component {
     return (
       <AppFrame classes={{ drawer: classes.drawer }}>
         <div className={classes.root}>
-          <Head />
+          <NormalHead />
         </div>
       </AppFrame>
     );

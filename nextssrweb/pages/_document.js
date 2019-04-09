@@ -3,10 +3,9 @@ import React from 'react';
 import { ServerStyleSheets } from '@material-ui/styles';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { Router } from 'next/router';
-import { LANGUAGES } from 'src/modules/constants';
-import { pathnameToLanguage } from 'src/modules/utils/helpers';
-import getTheme from 'src/modules/styles/getTheme';
-import themeInitialState from 'src/modules/styles/themeInitialState';
+import { pathnameToLanguage } from 'modules/utils/helpers';
+import getTheme from 'modules/styles/getTheme';
+import themeInitialState from 'modules/styles/themeInitialState';
 
 const theme = getTheme(themeInitialState);
 let prefixer;
@@ -23,12 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 
 class GookaijuDocument extends Document {
   render() {
-    const { canonical, url, userLanguage } = this.props;
-    let font = 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
-    if (url.match(/onepirate/)) {
-      font = 'https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Work+Sans:300,400';
-    }
-
+    const { canonical, userLanguage } = this.props;
     return (
       <html lang={userLanguage} dir="ltr">
         <Head>
@@ -36,24 +30,8 @@ class GookaijuDocument extends Document {
           <link rel="manifest" href="/static/manifest.json" />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/static/favicon.ico" />
-          <link
-            rel="canonical"
-            href={`https://gookaiju.com${Router._rewriteUrlForNextExport(
-              `${userLanguage === 'en' ? '' : `/${userLanguage}`}${canonical}`,
-            )}`}
-          />
-          {LANGUAGES.map(userLanguage2 => (
-            <link
-              key={userLanguage2}
-              rel="alternate"
-              href={`https://gookaiju.com/${Router._rewriteUrlForNextExport(
-                `${userLanguage2}${canonical}`,
-              )}`}
-              hrefLang={userLanguage2}
-            />
-          ))}
-          <link rel="stylesheet" href={font} />
-          <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous" />
+          <link rel="canonical" href={`https://gookaiju.com${Router._rewriteUrlForNextExport(`${userLanguage === 'zh' ? '' : `/${userLanguage}`}${canonical}`)}`} />
+          <link rel="stylesheet" href={'https://fonts.googleapis.com/css?family=Roboto:300,400,500'} />
           <style id="insertion-point-jss" />
           <style id="gookaiju-icon-font" />
         </Head>

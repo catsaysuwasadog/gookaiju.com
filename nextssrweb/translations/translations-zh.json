@@ -1,10 +1,14 @@
 {
   "pmsg_footer_release": "当前 {{release_version}}. 根据 {{release_license}} 发布。",
   "pmsg_mitlicense": "MIT 许可证",
+  "pmsg_navigation": " 导航",
   "pmsg_aboutme": " 关于我",
   "pmsg_quickLinks": "快速链接",
-  "pmsg_headTitle": "gookaiju",
+  "pmsg_indexheadTitle": "gookaiju首页",
   "headDescription": "gookaiju.com page for ch.iduosi",
+  "pmsg_gookaiju_logotitle": "gookaiju.com",
+  "pmsg_gookaiju_title_intro1": "知己之所知知己之所不知",
+  "pmsg_gookaiju_title_intro2": "不知己之所知不知己之所不知",
   "pages": {
     "/getting-started": "Getting Started"
   }

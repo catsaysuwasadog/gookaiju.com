@@ -73,7 +73,7 @@
     "babel-plugin-transform-dev-warning": "^0.1.0",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "babel-plugin-unwrap-createStyles": "link:libpackages/babel-plugin-unwrap-createStyles",
+    "babel-plugin-unwrap-createStyles": "link:lib/packages/babel-plugin-unwrap-createStyles",
     "chai": "^4.1.2",
     "classnames": "^2.2.6",
     "clean-css": "^4.1.11",

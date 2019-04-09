@@ -6,7 +6,7 @@ import { withRouter } from 'next/router';
 import NextLink from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 import { connect } from 'react-redux';
-import compose from 'src/modules/utils/compose';
+import compose from 'modules/utils/compose';
 
 const NextComposed = React.forwardRef(function NextComposed(props, ref) {
   const { as, href, prefetch, ...other } = props;
@@ -39,7 +39,7 @@ const Link = React.forwardRef(function Link(props, ref) {
     [activeClassName]: router.pathname === props.href && activeClassName,
   });
 
-  if (userLanguage !== 'en' && other.href.indexOf('/') === 0) {
+  if (userLanguage !== 'zh' && other.href.indexOf('/') === 0) {
     other.as = `/${userLanguage}${other.href}`;
   }
 

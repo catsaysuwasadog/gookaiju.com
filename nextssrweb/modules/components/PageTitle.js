@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { pageToTitleI18n } from 'src/modules/utils/helpers';
-import PageContext from 'src/modules/components/PageContext';
+import { pageToTitleI18n } from 'modules/utils/helpers';
+import PageContext from 'modules/components/PageContext';
 
 function PageTitle(props) {
   const { activePage } = React.useContext(PageContext);

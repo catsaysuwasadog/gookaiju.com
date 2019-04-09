@@ -3,7 +3,7 @@ const bpmr = require('babel-plugin-module-resolver');
 function resolvePath(sourcePath, currentFile, opts) {
   if (sourcePath === 'markdown') {
     const base = currentFile.substring(__dirname.length).slice(0, -3);
-    return `${__dirname}/src/${base}/`;
+    return `${__dirname}/makedownpath/${base}/`;
   }
   return bpmr.resolvePath(sourcePath, currentFile, opts);
 }
@@ -23,7 +23,6 @@ if (process.env.BABEL_ENV === 'es') {
   ];
 }
 
-const defaultAlias = {};
 const productionPlugins = [
   'babel-plugin-transform-react-constant-elements',
   'babel-plugin-transform-dev-warning',
@@ -54,11 +53,10 @@ module.exports = {
           'babel-plugin-module-resolver',
           {
             alias: {
-              ...defaultAlias,
-              src: './src',
-              modules: './modules',
+              commonmodules: './lib/commonmodules',
               pages: './pages',
               translations: './translations',
+              modules: './modules',
             },
             transformFunctions: ['require', 'require.context'],
             resolvePath,
@@ -74,11 +72,10 @@ module.exports = {
           'babel-plugin-module-resolver',
           {
             alias: {
-              ...defaultAlias,
-              src: './src',
-              modules: './modules',
+              commonmodules: './lib/commonmodules',
               pages: './pages',
               translations: './translations',
+              modules: './modules',
             },
             transformFunctions: ['require', 'require.context'],
             resolvePath,
@@ -112,7 +109,6 @@ module.exports = {
           'babel-plugin-module-resolver',
           {
             root: ['./'],
-            alias: defaultAlias,
           },
         ],
       ],

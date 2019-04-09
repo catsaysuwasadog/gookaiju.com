@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import Interpolate from '@trendmicro/react-interpolate';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import NProgressBar from '@material-ui/docs/NProgressBar';
-import MarkdownLinks from 'src/modules/components/MarkdownLinks';
-import PageTitle from 'src/modules/components/PageTitle';
-import compose from 'src/modules/utils/compose';
-import { pathnameToLanguage } from 'src/modules/utils/helpers';
+import PageTitle from 'modules/components/basecomponents/PageTitle';
+import compose from 'modules/utils/compose';
+import { pathnameToLanguage } from 'modules/utils/helpers';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -48,6 +44,15 @@ const styles = theme => ({
     backgroundColor: '#311b92',
     color: 'white',
   },
+  topbanner: {
+    display: 'block',
+    padding: 4,
+    textAlign: 'center',
+    backgroundColor: '#311b92',
+    color: 'white',
+    width: '100%',
+    position: 'fixed',
+  },
   grow: {
     flex: '1 1 auto',
   },
@@ -73,10 +78,7 @@ const styles = theme => ({
 });
 
 class AppFrame extends React.Component {
-  state = {
-    // languageMenu: null,
-    // mobileOpen: false,
-  };
+  state = {};
 
   componentDidMount() {
     const { canonical } = pathnameToLanguage(window.location.pathname);
@@ -84,7 +86,7 @@ class AppFrame extends React.Component {
   }
 
   render() {
-    const { children, classes, reduxTheme, t, userLanguage } = this.props;
+    const { children, classes, t } = this.props;
     // const { languageMenu } = this.state;
 
     return (
@@ -94,12 +96,7 @@ class AppFrame extends React.Component {
             <div className={classes.root}>
               <NProgressBar />
               <CssBaseline />
-              <MarkdownLinks />
-              <AppBar className={classes.appBarHome}>
-                <Typography className={classes.banner} variant="body2" noWrap>
-                  <Interpolate></Interpolate>
-                </Typography>
-              </AppBar>
+              <div className={classes.topbanner}></div>
               {children}
             </div>
           );

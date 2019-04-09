@@ -1,7 +1,7 @@
 import warning from 'warning';
 import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
-import { CODE_VARIANTS, LANGUAGES } from 'src/modules/constants';
+import { CODE_VARIANTS, LANGUAGES } from 'modules/constants';
 
 export function titleize(string) {
   warning(
@@ -110,21 +110,33 @@ export function getDependencies(raw, options = {}) {
   return deps;
 }
 
+/**
+ * 获取cookie指定key的值
+ * @param {*} name
+ * @returns
+ */
 export function getCookie(name) {
   const regex = new RegExp(`(?:(?:^|.*;*)${name}*=*([^;]*).*$)|^.*$`);
   return document.cookie.replace(regex, '$1');
 }
 
+/**
+ * 根据pathname确定当前的语言，返回当前语言和路径对象
+ * @param {string} pathname
+ * @returns {Record<string, string>}
+ */
 export function pathnameToLanguage(pathname) {
   const userLanguage = pathname.substring(1, 3);
+
   if (LANGUAGES.indexOf(userLanguage) !== -1 && pathname.indexOf(`/${userLanguage}/`) === 0) {
     return {
       userLanguage,
-      canonical: userLanguage === 'en' ? pathname : pathname.substring(3),
+      canonical: userLanguage === 'zh' ? pathname : pathname.substring(3),
     };
   }
+
   return {
-    userLanguage: 'en',
+    userLanguage: 'zh',
     canonical: pathname,
   };
 }

@@ -4,14 +4,14 @@ import NextHead from 'next/head';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import compose from 'src/modules/utils/compose';
+import compose from 'modules/utils/compose';
 
-function IndexHead(props) {
+function NormalHead(props) {
   const {
     t,
     description = t('headDescription'),
     router,
-    title = t('pmsg_indexheadTitle'),
+    title = '工具页',
     userLanguage,
   } = props;
 
@@ -23,7 +23,7 @@ function IndexHead(props) {
   );
 }
 
-IndexHead.propTypes = {
+NormalHead.propTypes = {
   description: PropTypes.string,
   router: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
@@ -37,4 +37,4 @@ export default compose(
     t: state.options.t,
     userLanguage: state.options.userLanguage,
   })),
-)(IndexHead);
+)(NormalHead);

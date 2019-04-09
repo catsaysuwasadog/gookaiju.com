@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-
 const logTypes = {
   info: { level: 3, method: 'log' },
   warn: { level: 4, method: 'warn' },
@@ -44,7 +43,7 @@ function safeCycles() {
 /**
  * A fast JSON.stringify that handles cycles and getter exceptions (when safeJsonStringify is installed).
  * From: https://github.com/trentm/node-bunyan/blob/c0932196dd6846189ec82623c12d051eee799d4f/lib/bunyan.js#L1208
- **/
+ */
 function fastAndSafeJsonStringify(object) {
   try {
     return JSON.stringify(object);

@@ -3,9 +3,9 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname),
   resolve: {
-    modules: [path.join(__dirname, '../'), 'node_modules'],
+    modules: [path.join(__dirname, './'), 'node_modules'],
     alias: {
-      src: path.resolve(__dirname, '../src'),
+      commonmodules: path.resolve(__dirname, './lib/commonmodules'),
     },
   },
   output: {

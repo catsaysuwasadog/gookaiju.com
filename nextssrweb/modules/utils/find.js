@@ -1,48 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const markdownRegex = /\.md$/;
-
-// Returns the markdowns of the documentation in a flat array.
-// {
-//   pathname: String,
-//   filename: String,
-// }
-function findPagesMarkdown(
-  directory = path.resolve(__dirname, '../../../src/pages'),
-  pagesMarkdown = [],
-) {
-  const items = fs.readdirSync(directory);
-
-  items.forEach(item => {
-    const itemPath = path.resolve(directory, item);
-
-    if (fs.statSync(itemPath).isDirectory()) {
-      findPagesMarkdown(itemPath, pagesMarkdown);
-      return;
-    }
-
-    if (!markdownRegex.test(item)) {
-      return;
-    }
-
-    let pathname = itemPath
-      .replace(new RegExp(`\\${path.sep}`, 'g'), '/')
-      .replace(/^.*\/pages/, '')
-      .replace('.md', '');
-
-    // Remove the last pathname segment.
-    pathname = pathname.split('/').slice(0, 3).join('/');
-
-    pagesMarkdown.push({
-      pathname,
-      filename: itemPath,
-    });
-  });
-
-  return pagesMarkdown;
-}
-
 const componentRegex = /^([A-Z][a-z]+)+\.js/;
 
 function findComponents(directory, components = []) {
@@ -71,12 +29,15 @@ function findComponents(directory, components = []) {
 const jsRegex = /\.js$/;
 const blackList = ['/.eslintrc', '/_document', '/_app'];
 
-// Returns the Next.js pages available in a nested format.
-// The output is in the next.js format.
-// Each pathname is a route you can navigate to.
+/**
+ * returns the Next.js pages available in a nested format
+ * @param {*} options
+ * @param {*} directory
+ * @param {*} pages
+ */
 function findPages(
   options = {},
-  directory = path.resolve(__dirname, '../../../pages'),
+  directory = path.resolve(__dirname, '../../pages'),
   pages = [],
 ) {
   fs.readdirSync(directory).forEach(item => {
@@ -88,16 +49,12 @@ function findPages(
       .replace(/^\/index$/, '/') // Replace `index` by `/`.
       .replace(/\/index$/, '');
 
+    // 忽略 .eslintrc 文件
     if (pathname.indexOf('.eslintrc') !== -1) {
       return;
     }
 
-    if (
-      options.front &&
-      pathname.indexOf('/demos') === -1 &&
-      pathname.indexOf('/api') === -1 &&
-      pathname.indexOf('/lab') === -1
-    ) {
+    if (options.front) {
       return;
     }
 
@@ -134,6 +91,5 @@ function findPages(
 
 module.exports = {
   findPages,
-  findPagesMarkdown,
   findComponents,
 };

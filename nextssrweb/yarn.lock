@@ -3099,7 +3099,7 @@ babel-plugin-transform-react-remove-prop-types@^0.4.21:
   resolved "http://registry.npm.taobao.org/babel-plugin-transform-react-remove-prop-types/download/babel-plugin-transform-react-remove-prop-types-0.4.24.tgz#f2edaf9b4c6a5fbe5c1d678bfb531078c1555f3a"
   integrity sha1-8u2vm0xqX75cHWeL+1MQeMFVXzo=
 
-"babel-plugin-unwrap-createStyles@link:libpackages/babel-plugin-unwrap-createStyles":
+"babel-plugin-unwrap-createStyles@link:lib/packages/babel-plugin-unwrap-createStyles":
   version "0.0.0"
   uid ""
 

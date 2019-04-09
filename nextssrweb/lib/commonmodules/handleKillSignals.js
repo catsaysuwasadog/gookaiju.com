@@ -1,4 +1,4 @@
-import log from 'modules/log';
+import log from 'commonmodules/log';
 
 const SHUTDOWN_TIMEOUT = 10e3;
 let shuttingDown = false;
@@ -12,7 +12,7 @@ export function isShuttingDown() {
  * shutdown === the termination handler
  * Terminate server on receipt of the specified signal.
  * @param {string} signal  Signal to terminate on.
- **/
+ */
 export async function shutdown(signal, origin) {
   if (typeof signal === 'string') {
     log.info({

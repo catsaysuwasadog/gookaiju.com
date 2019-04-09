@@ -1,10 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import themeReducer from 'src/modules/redux/themeReducer';
-import optionsReducer from 'src/modules/redux/optionsReducer';
+import themeReducer from 'modules/redux/themeReducer';
+import optionsReducer from 'modules/redux/optionsReducer';
 
-// Get the Redux DevTools extension and fallback to a no-op function
 let devtools = x => x;
 
 if (
@@ -22,7 +20,7 @@ function create(initialState) {
     process.env.NODE_ENV !== 'production' &&
     process.browser &&
     !window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    Object.assign // redux-logger needs this feature
+    Object.assign
   ) {
     // eslint-disable-next-line global-require
     const createLogger = require('redux-logger').createLogger;
@@ -34,7 +32,7 @@ function create(initialState) {
       theme: themeReducer,
       options: optionsReducer,
     }),
-    initialState, // Hydrate the store with server-side data
+    initialState,
     compose(
       applyMiddleware(...middleware),
       devtools,
@@ -43,13 +41,10 @@ function create(initialState) {
 }
 
 export default function initRedux(initialState) {
-  // Make sure to create a new store for every server-side request so that data
-  // isn't shared between connections (which would be bad)
   if (!process.browser) {
     return create(initialState);
   }
 
-  // Reuse store on the client-side
   if (!global.__INIT_REDUX_STORE__) {
     global.__INIT_REDUX_STORE__ = create(initialState);
   }

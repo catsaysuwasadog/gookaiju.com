@@ -6,8 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Link from 'src/modules/components/Link';
-import compose from 'src/modules/utils/compose';
+import Link from 'modules/components/Link';
+import compose from 'modules/utils/compose';
 
 const styles = theme => ({
   footer: {

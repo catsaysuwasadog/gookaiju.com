@@ -1,4 +1,4 @@
-// import findPages from 'src/modules/utils/findPages';
+// import findPages from 'modules/utils/findPages';
 
 const pages = [
   {

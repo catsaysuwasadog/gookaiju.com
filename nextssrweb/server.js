@@ -2,9 +2,9 @@ import http from 'http';
 import express from 'express';
 import url from 'url';
 import next from 'next';
-import log from 'modules/log';
-import { addTeardown } from 'modules/handleKillSignals';
-import { pathnameToLanguage } from 'src/modules/utils/helpers';
+import log from 'commonmodules/log';
+import { addTeardown } from 'commonmodules/handleKillSignals';
+import { pathnameToLanguage } from 'modules/utils/helpers';
 
 
 const nextApp = next({
@@ -26,7 +26,7 @@ async function run() {
     let { pathname } = parsedUrl;
     const { userLanguage, canonical } = pathnameToLanguage(pathname);
 
-    if (userLanguage !== 'en') {
+    if (userLanguage !== 'zh') {
       pathname = canonical;
       if (pathname !== '/') {
         pathname = pathname.replace(/\/$/, '');

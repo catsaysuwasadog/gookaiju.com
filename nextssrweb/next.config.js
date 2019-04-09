@@ -3,7 +3,7 @@ const withTM = require('next-plugin-transpile-modules');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const withTypescript = require('@zeit/next-typescript');
 const pkg = require('./package.json');
-const { findPages } = require('src/modules/utils/find');
+const { findPages } = require('modules/utils/find');
 
 const LANGUAGES = ['en', 'zh'];
 
@@ -54,15 +54,12 @@ module.exports = withTypescript({
     });
   },
   webpackDevMiddleware: config => config,
-  // Next.js provides a `defaultPathMap` argument, we could simplify the logic.
-  // However, we don't in order to prevent any regression in the `findPages()` method.
   exportPathMap: () => {
     const pages = findPages();
     const map = {};
 
     function traverse(pages2, userLanguage) {
-      const prefix = userLanguage === 'en' ? '' : `/${userLanguage}`;
-
+      const prefix = userLanguage === 'zh' ? '' : `/${userLanguage}`;
       pages2.forEach(page => {
         if (!page.children) {
           map[`${prefix}${page.pathname}`] = {
@@ -77,9 +74,9 @@ module.exports = withTypescript({
         traverse(page.children, userLanguage);
       });
     }
-    // We want to speed-up the build of pull requests.
+
     if (process.env.PULL_REQUEST === 'true') {
-      traverse(pages, 'en');
+      traverse(pages, 'zh');
     } else {
       LANGUAGES.forEach(userLanguage => {
         traverse(pages, userLanguage);

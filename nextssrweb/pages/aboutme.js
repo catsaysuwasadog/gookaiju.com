@@ -1,11 +1,11 @@
-import 'src/modules/components/bootstrap';
+import 'modules/components/bootstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import AppFrame from 'src/modules/components/AppFrame';
-import NormalHead from 'src/modules/components/NormalHead';
-import compose from 'src/modules/utils/compose';
+import AppFrame from 'modules/components/otherLayout/AppFrame';
+import NormalHead from 'modules/components/NormalHead';
+import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
 

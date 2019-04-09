@@ -1,13 +1,13 @@
-import 'src/modules/components/bootstrap';
+import 'modules/components/bootstrap';
 import React from 'react';
 import App, { Container } from 'next/app';
 import find from 'lodash/find';
 import { Provider as ReduxProvider } from 'react-redux';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
-import AppWrapper from 'src/modules/components/AppWrapper';
-import PageContext from 'src/modules/components/PageContext';
-import initRedux from 'src/modules/redux/initRedux';
-import pages from 'src/pages';
+import PageContext from 'modules/components/PageContext';
+import AppWrapper from 'modules/components/AppWrapper';
+import initRedux from 'modules/redux/initRedux';
+import pages from 'modules/pages';
 
 const USE_STRICT_MODE = false;
 const ReactMode = USE_STRICT_MODE ? React.StrictMode : React.Fragment;
@@ -24,7 +24,7 @@ function loadDependencies() {
 
 if (process.browser) {
   // eslint-disable-next-line no-console
-  console.log('welcome gookaiju.com web page......');
+  console.log('Welcome gookaiju.com ......');
 }
 
 function findActivePage(currentPages, router) {
@@ -34,9 +34,11 @@ function findActivePage(currentPages, router) {
     }
     return router.pathname === page.pathname;
   });
+
   if (!activePage) {
     return null;
   }
+
   if (activePage.pathname !== router.pathname) {
     return findActivePage(activePage.children, router);
   }
@@ -58,6 +60,7 @@ class GookaijuApp extends App {
     const { Component, pageProps, router } = this.props;
 
     let pathname = router.pathname;
+
     if (pathname !== '/') {
       pathname = pathname.replace(/\/$/, '');
     }

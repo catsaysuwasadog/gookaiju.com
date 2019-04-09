@@ -1,5 +1,5 @@
-import { ACTION_TYPES } from 'src/modules/constants';
-import themeInitialState from 'src/modules/styles/themeInitialState';
+import { ACTION_TYPES } from 'modules/constants';
+import themeInitialState from 'modules/styles/themeInitialState';
 
 const mapping = {
   [ACTION_TYPES.THEME_CHANGE]: (state, action) => ({

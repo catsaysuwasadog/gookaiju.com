@@ -1,18 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  StylesProvider,
-  ThemeProvider,
-  jssPreset,
-  createGenerateClassName,
-} from '@material-ui/styles';
+import { StylesProvider, ThemeProvider, jssPreset, createGenerateClassName } from '@material-ui/styles';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
-import { ACTION_TYPES } from 'src/modules/constants';
-import { lightTheme, darkTheme, setPrismTheme } from 'src/modules/components/prism';
-import getTheme from 'src/modules/styles/getTheme';
-import { getCookie } from 'src/modules/utils/helpers';
+import { ACTION_TYPES } from 'modules/constants';
+import { lightTheme, darkTheme, setPrismTheme } from 'modules/components/prism';
+import getTheme from 'modules/styles/getTheme';
+import { getCookie } from 'modules/utils/helpers';
 
 const jss = create({
   plugins: [...jssPreset().plugins, rtl()],
@@ -28,7 +23,17 @@ function themeSideEffect(reduxTheme) {
 
 class SideEffectsRaw extends React.Component {
   componentDidMount() {
-    // const { options } = this.props;
+    const { options } = this.props;
+    const codeVariant = getCookie('codeVariant');
+
+    if (codeVariant && options.codeVariant !== codeVariant) {
+      this.props.dispatch({
+        type: ACTION_TYPES.OPTIONS_CHANGE,
+        payload: {
+          codeVariant,
+        },
+      });
+    }
   }
 
   render() {
@@ -45,7 +50,6 @@ const SideEffects = connect(state => ({
   options: state.options,
 }))(SideEffectsRaw);
 
-// Inspired by https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
 function forcePageReload(registration) {
   if (!navigator.serviceWorker.controller) {
     return;

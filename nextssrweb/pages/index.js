@@ -1,4 +1,4 @@
-import 'src/modules/components/bootstrap';
+import 'modules/components/bootstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,11 +6,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import HomeFooter from 'src/modules/components/HomeFooter';
-import AppFrame from 'src/modules/components/AppFrame';
-import Link from 'src/modules/components/Link';
-import IndexHead from 'src/modules/components/IndexHead';
-import compose from 'src/modules/utils/compose';
+import HomeFooter from 'modules/components/HomeFooter';
+import AppFrame from 'modules/components/indexLayout/AppFrame';
+import Link from 'modules/components/basecomponents/Link';
+import IndexHead from 'modules/components/IndexHead';
+import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
 
@@ -118,22 +118,19 @@ class HomePage extends React.Component {
               <img src="/static/logo.png" alt="gookaiju.com logo" className={classes.logo} />
               <div>
                 <Typography variant="h3" component="h1" color="inherit" gutterBottom className={classes.title}>
-                  {'gookaiju.com'}
+                  {t('pmsg_gookaiju_logotitle')}
                 </Typography>
                 <Typography variant="h5" component="h2" color="inherit">
-                  {'知己之所知知己之所不知'}
+                  {t('pmsg_gookaiju_title_intro1')}
                 </Typography>
                 <Typography variant="h5" component="h2" color="inherit">
-                  {'不知己之所知不知己之所不知'}
+                  {t('pmsg_gookaiju_title_intro2')}
                 </Typography>
                 <Button component={GettingNav} className={classes.button} variant="outlined" color="primary">
-                  {'导航'}
+                  {t('pmsg_navigation')}
                 </Button>
                 <Button component={GettingAboutme} className={classes.button} variant="outlined" color="primary">
-                  {'OTP'}
-                </Button>
-                <Button component={GettingAboutme} className={classes.button} variant="outlined" color="primary">
-                  {'Aboutme'}
+                  {t('pmsg_aboutme')}
                 </Button>
               </div>
             </Container>

@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
-
 import memoize from '@material-ui/system/memoize';
-
-import { ACTION_TYPES, CODE_VARIANTS } from 'src/modules/constants';
-import mapTranslations from 'src/modules/utils/mapTranslations';
+import { ACTION_TYPES, CODE_VARIANTS } from 'modules/constants';
+import mapTranslations from 'modules/utils/mapTranslations';
 
 const req = require.context('translations', false, /translations.*\.json$/);
 const translations = mapTranslations(req, 'json');
@@ -35,7 +33,7 @@ const getT = memoize(userLanguage => (key, options = {}) => {
       console.error(`Missing translation for ${fullKey}.`);
       warnOnce[fullKey] = true;
     }
-    return getPath(translations.en, key);
+    return getPath(translations.zh, key);
   }
 
   return translation;
@@ -58,7 +56,7 @@ function optionsReducer(state = {}, action) {
     newState.codeVariant = CODE_VARIANTS.JS;
   }
   if (!newState.userLanguage) {
-    newState.userLanguage = 'en';
+    newState.userLanguage = 'zh';
   }
 
   if (mapping[action.type]) {
