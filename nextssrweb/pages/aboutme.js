@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import AppFrame from 'modules/components/otherLayout/AppFrame';
-import NormalHead from 'modules/components/NormalHead';
 import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
@@ -17,41 +16,10 @@ function loadDependencies() {
 }
 
 const styles = theme => ({
-  root: {
-    flex: '1 0 100%',
-  },
-  drawer: {
-    width: 0,
-  },
   hero: {
     paddingTop: theme.spacing(0.5),
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.type === 'light' ? theme.palette.primary.dark : theme.palette.primary.main,
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(8),
-    [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      textAlign: 'left',
-    },
-  },
-  title: {
-    marginLeft: -12,
-    whiteSpace: 'nowrap',
-    letterSpacing: '.7rem',
-    textIndent: '.7rem',
-    fontWeight: theme.typography.fontWeightLight,
-    [theme.breakpoints.only('xs')]: {
-      fontSize: 28,
-    },
   },
 });
 
@@ -65,12 +33,11 @@ class HomePage extends React.Component {
   }
 
   render() {
+    /* eslint-disable no-unused-vars */
     const { classes, t } = this.props;
     return (
-      <AppFrame classes={{ drawer: classes.drawer }}>
-        <div className={classes.root}>
-          <NormalHead />
-        </div>
+      <AppFrame>
+        <div className={classes.hero}></div>
       </AppFrame>
     );
   }

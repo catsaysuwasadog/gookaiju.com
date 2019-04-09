@@ -1,6 +1,4 @@
 import warning from 'warning';
-import upperFirst from 'lodash/upperFirst';
-import camelCase from 'lodash/camelCase';
 import { CODE_VARIANTS, LANGUAGES } from 'modules/constants';
 
 export function titleize(string) {
@@ -25,10 +23,6 @@ export function pageToTitle(page) {
   }
 
   const name = page.pathname.replace(/.*\//, '');
-
-  if (page.pathname.indexOf('/api/') !== -1) {
-    return upperFirst(camelCase(name));
-  }
 
   return titleize(name);
 }

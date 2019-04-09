@@ -32,7 +32,6 @@ const styles = theme => ({
 
 function Footer(props) {
   const { classes, t } = props;
-
   return (
     <Container maxWidth="md">
       <footer className={classes.footer}>
@@ -46,6 +45,10 @@ function Footer(props) {
                 <li className={classes.listItem}>
                   <Link color="inherit" href="https://github.com/catsaysuwasadog">GitHub</Link>
                 </li>
+              </ul>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <ul className={classes.list}>
                 <li className={classes.listItem}>
                   <Link color="inherit" href="/aboutme">
                     {t('pmsg_aboutme')}

@@ -6,10 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import Footer from 'modules/components/indexLayout/Footer';
 import AppFrame from 'modules/components/indexLayout/AppFrame';
 import Link from 'modules/components/basecomponents/Link';
-import Header from 'modules/components/indexLayout/Header';
 import compose from 'modules/utils/compose';
 
 let dependenciesLoaded = false;
@@ -22,12 +20,6 @@ function loadDependencies() {
 }
 
 const styles = theme => ({
-  root: {
-    flex: '1 0 100%',
-  },
-  drawer: {
-    width: 0,
-  },
   hero: {
     paddingTop: theme.spacing(0.5),
     backgroundColor: theme.palette.background.paper,
@@ -110,10 +102,8 @@ class HomePage extends React.Component {
   render() {
     const { classes, t } = this.props;
     return (
-      <AppFrame classes={{ drawer: classes.drawer }}>
-        <div className={classes.root}>
-          <Header />
-          <div className={classes.hero}>
+      <AppFrame>
+        <div className={classes.hero}>
             <Container maxWidth="md" className={classes.content}>
               <img src="/static/logo.png" alt="gookaiju.com logo" className={classes.logo} />
               <div>
@@ -135,8 +125,6 @@ class HomePage extends React.Component {
               </div>
             </Container>
           </div>
-          <Footer />
-        </div>
       </AppFrame>
     );
   }

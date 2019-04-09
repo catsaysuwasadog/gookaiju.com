@@ -4,7 +4,7 @@ import App, { Container } from 'next/app';
 import find from 'lodash/find';
 import { Provider as ReduxProvider } from 'react-redux';
 import { loadCSS } from 'fg-loadcss/src/loadCSS';
-import PageContext from 'modules/components/PageContext';
+import PageContext from 'modules/components/basecomponents/PageContext';
 import AppWrapper from 'modules/components/AppWrapper';
 import initRedux from 'modules/redux/initRedux';
 import pages from 'modules/pages';
