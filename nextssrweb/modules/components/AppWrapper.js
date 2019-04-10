@@ -18,7 +18,6 @@ const generateClassName = createGenerateClassName();
 
 function themeSideEffect(reduxTheme) {
   setPrismTheme(reduxTheme.paletteType === 'light' ? lightTheme : darkTheme);
-  document.body.dir = reduxTheme.direction;
 }
 
 class SideEffectsRaw extends React.Component {
@@ -134,8 +133,7 @@ class AppWrapper extends React.Component {
 
     if (
       nextProps.reduxTheme.paletteType !== prevProps.reduxTheme.paletteType ||
-      nextProps.reduxTheme.paletteColors !== prevProps.reduxTheme.paletteColors ||
-      nextProps.reduxTheme.direction !== prevProps.reduxTheme.direction
+      nextProps.reduxTheme.paletteColors !== prevProps.reduxTheme.paletteColors
     ) {
       return {
         prevProps: nextProps,

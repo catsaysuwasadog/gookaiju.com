@@ -3,7 +3,6 @@ import pink from '@material-ui/core/colors/pink';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 
 const themeInitialState = {
-  direction: 'ltr',
   paletteType: 'light',
   paletteColors: {
     primary: indigo,

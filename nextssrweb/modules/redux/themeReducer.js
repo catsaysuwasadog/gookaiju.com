@@ -4,7 +4,6 @@ import themeInitialState from 'modules/styles/themeInitialState';
 const mapping = {
   [ACTION_TYPES.THEME_CHANGE]: (state, action) => ({
     paletteType: action.payload.paletteType || state.paletteType,
-    direction: action.payload.direction || state.direction,
     paletteColors: action.payload.paletteColors || state.paletteColors,
   }),
 };
