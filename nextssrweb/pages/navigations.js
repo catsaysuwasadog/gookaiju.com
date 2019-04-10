@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import AppFrame from 'modules/components/layout/AppFrame';
 import compose from 'modules/utils/compose';
-import { getNavTypes } from "modules/stores/actions";
+import { getNavTypes, getNavigations } from "modules/stores/actions";
 
 let dependenciesLoaded = false;
 
@@ -34,18 +34,18 @@ class NavigationPage extends React.Component {
     }
     loadDependencies();
 
-    getNavTypes(this.props.dispatch, 'https://api.github.com/repos/mui-org/material-ui-docs/branches')
+    // getNavTypes(this.props.dispatch, 'https://api.github.com/repos/mui-org/material-ui-docs/branches')
+    getNavTypes(this.props.dispatch, 'http://127.0.0.1:10240/api/v1/navigationresource/navigations')
+    getNavigations(this.props.dispatch, 'http://127.0.0.1:10240/api/v1/navigationresource/navigationtypes')
   }
 
   render() {
     /* eslint-disable no-unused-vars */
-    const { classes, reduxNavigationTypes = [], t } = this.props;
+    // const { classes, reduxNavigationTypes = [], t } = this.props;
+    const { classes, t } = this.props;
     return (
       <AppFrame>
         <div className={classes.hero}>
-          {
-            reduxNavigationTypes.map(navigationType => (<div key={`item-${navigationType.name}`}>{navigationType.name}</div>))
-          }
         </div>
       </AppFrame>
     );
@@ -55,13 +55,13 @@ class NavigationPage extends React.Component {
 NavigationPage.propTypes = {
   classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  reduxNavigationTypes: PropTypes.array.isRequired,
+  // reduxNavigationTypes: PropTypes.array.isRequired,
   t: PropTypes.func.isRequired,
 };
 
 export default compose(
   connect(state => ({
-    reduxNavigationTypes: state.responses.navTypesRes,
+    // reduxNavigationTypes: state.responses.navTypesRes,
     t: state.options.t,
   })),
   withStyles(styles),

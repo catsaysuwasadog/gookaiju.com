@@ -2,10 +2,11 @@ import http from 'http';
 import express from 'express';
 import url from 'url';
 import next from 'next';
+import mongoose from 'mongoose';
 import log from 'commonmodules/log';
 import { addTeardown } from 'commonmodules/handleKillSignals';
 import { pathnameToLanguage } from 'modules/utils/helpers';
-
+import apiRouterHandler from 'apilib/apiRouterHandler';
 
 const nextApp = next({
   dev: process.env.NODE_ENV !== 'production',
@@ -20,6 +21,31 @@ addTeardown({
 async function run() {
   await nextApp.prepare();
   const app = express();
+  // const devmode = process.env.NODE_ENV !== 'production';
+
+  const port = parseInt(process.env.PORT, 10) || 10240;
+  const host = '127.0.0.1';
+
+  app.get('/_next/*', (req, res) => {
+    nextHandler(req, res);
+  });
+
+  app.get('/static/*', (req, res) => {
+    nextHandler(req, res);
+  });
+
+  mongoose.connect('mongodb://MONGO-SERVER-URL', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    user: 'MONGO-SERVER-USER',
+    pass: 'MONGO-SERVER-PASSWORD',
+    auth: {
+      authdb: 'magic'
+    }
+  });
+
+  apiRouterHandler(app);
 
   app.get('*', (req, res) => {
     const parsedUrl = url.parse(req.url, true);
@@ -42,9 +68,6 @@ async function run() {
   });
 
   const server = http.createServer(app);
-  const port = parseInt(process.env.PORT, 10) || 10240;
-  const host = '127.0.0.1';
-
   server.listen(port, host, err => {
     if (err) {
       throw err;
