@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import AppFrame from 'modules/components/otherLayout/AppFrame';
 import compose from 'modules/utils/compose';
+import { getNavTypes } from "modules/stores/actions";
 
 let dependenciesLoaded = false;
 
@@ -24,20 +25,28 @@ const styles = theme => ({
 });
 
 class HomePage extends React.Component {
+  state = {};
+
   componentDidMount() {
     /* eslint-disable no-console */
     if (window.location.hash !== '') {
       window.location.replace(`https://gookaiju.com/${window.location.hash}`);
     }
     loadDependencies();
+
+    getNavTypes(this.props.dispatch, 'https://api.github.com/repos/mui-org/material-ui-docs/branches')
   }
 
   render() {
     /* eslint-disable no-unused-vars */
-    const { classes, t } = this.props;
+    const { classes, reduxNavigationTypes = [], t } = this.props;
     return (
       <AppFrame>
-        <div className={classes.hero}></div>
+        <div className={classes.hero}>
+          {
+            reduxNavigationTypes.map(navigationType => (<div key={`item-${navigationType.name}`}>{navigationType.name}</div>))
+          }
+        </div>
       </AppFrame>
     );
   }
@@ -45,11 +54,14 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  reduxNavigationTypes: PropTypes.array.isRequired,
   t: PropTypes.func.isRequired,
 };
 
 export default compose(
   connect(state => ({
+    reduxNavigationTypes: state.responses.navTypesRes,
     t: state.options.t,
   })),
   withStyles(styles),

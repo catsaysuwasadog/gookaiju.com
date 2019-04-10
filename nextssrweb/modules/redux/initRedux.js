@@ -2,6 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import themeReducer from 'modules/redux/themeReducer';
 import optionsReducer from 'modules/redux/optionsReducer';
+import actionsReducer from 'modules/redux/actionsReducer';
 
 let devtools = x => x;
 
@@ -31,6 +32,7 @@ function create(initialState) {
     combineReducers({
       theme: themeReducer,
       options: optionsReducer,
+      responses: actionsReducer,
     }),
     initialState,
     compose(

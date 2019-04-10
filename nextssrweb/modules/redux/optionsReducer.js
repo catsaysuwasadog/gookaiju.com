@@ -3,8 +3,9 @@ import memoize from '@material-ui/system/memoize';
 import { ACTION_TYPES, CODE_VARIANTS } from 'modules/constants';
 import mapTranslations from 'modules/utils/mapTranslations';
 
-const req = require.context('translations', false, /translations.*\.json$/);
-const translations = mapTranslations(req, 'json');
+// il8n translations文件内容的引入： translationsContext => {filename<string>:filecontext<object>}
+const translationsContext = require.context('translations', false, /translations.*\.json$/);
+const translations = mapTranslations(translationsContext, 'json');
 
 function getPath(obj, path) {
   if (!path || typeof path !== 'string') {
@@ -16,6 +17,11 @@ function getPath(obj, path) {
 
 const warnOnce = {};
 
+/**
+ * 返回用户选择的语言的il8n资源文件内容对象操作方法
+ * @param {string} userLanguage 当前用户选择的语言
+ * @returns {func}
+ */
 const getT = memoize(userLanguage => (key, options = {}) => {
   const { ignoreWarning = false } = options;
   const wordings = translations[userLanguage];
