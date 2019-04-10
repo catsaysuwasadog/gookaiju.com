@@ -23,7 +23,7 @@ const styles = theme => ({
   },
 });
 
-class HomePage extends React.Component {
+class AboutmePage extends React.Component {
   componentDidMount() {
     /* eslint-disable no-console */
     if (window.location.hash !== '') {
@@ -43,7 +43,7 @@ class HomePage extends React.Component {
   }
 }
 
-HomePage.propTypes = {
+AboutmePage.propTypes = {
   classes: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
@@ -53,4 +53,4 @@ export default compose(
     t: state.options.t,
   })),
   withStyles(styles),
-)(HomePage);
+)(AboutmePage);

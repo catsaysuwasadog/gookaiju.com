@@ -24,7 +24,7 @@ const styles = theme => ({
   },
 });
 
-class HomePage extends React.Component {
+class NavigationPage extends React.Component {
   state = {};
 
   componentDidMount() {
@@ -52,7 +52,7 @@ class HomePage extends React.Component {
   }
 }
 
-HomePage.propTypes = {
+NavigationPage.propTypes = {
   classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   reduxNavigationTypes: PropTypes.array.isRequired,
@@ -65,4 +65,4 @@ export default compose(
     t: state.options.t,
   })),
   withStyles(styles),
-)(HomePage);
+)(NavigationPage);
