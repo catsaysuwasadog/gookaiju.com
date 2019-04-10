@@ -10,7 +10,7 @@ import PageTitle from 'modules/components/basecomponents/PageTitle';
 import compose from 'modules/utils/compose';
 import { pathnameToLanguage } from 'modules/utils/helpers';
 import Head from 'modules/components/Head';
-import Footer from 'modules/components/indexLayout/Footer';
+import Footer from 'modules/components/homeLayout/Footer';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();

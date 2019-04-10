@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import AppFrame from 'modules/components/indexLayout/AppFrame';
+import AppFrame from 'modules/components/homeLayout/AppFrame';
 import Link from 'modules/components/basecomponents/Link';
 import compose from 'modules/utils/compose';
 
