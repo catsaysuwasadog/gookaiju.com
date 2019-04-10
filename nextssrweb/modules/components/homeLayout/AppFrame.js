@@ -68,7 +68,7 @@ class AppFrame extends React.Component {
       <PageTitle t={t}>
         {title => {
           // eslint-disable-next-line no-console
-          console.log(`IndexHome + AppFrame + PageTitle ${title}......`);
+          console.log(`Home - AppFrame + PageTitle ${title}......`);
 
           return (
             <div className={classes.root}>

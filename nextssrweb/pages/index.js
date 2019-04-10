@@ -30,6 +30,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
+    color: '#000',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(8),
     [theme.breakpoints.up('md')]: {
@@ -63,7 +64,7 @@ const styles = theme => ({
   },
   button: {
     marginTop: theme.spacing(4),
-    marginRight: theme.spacing(0.5),
+    marginRight: theme.spacing(1),
   },
   social: {
     backgroundColor: theme.palette.background.paper,
@@ -107,13 +108,13 @@ class HomePage extends React.Component {
             <Container maxWidth="md" className={classes.content}>
               <img src="/static/logo.png" alt="gookaiju.com logo" className={classes.logo} />
               <div>
-                <Typography variant="h3" component="h1" color="inherit" gutterBottom className={classes.title}>
+                <Typography variant="h3" component="h1" gutterBottom className={classes.title}>
                   {t('pmsg_gookaiju_logotitle')}
                 </Typography>
-                <Typography variant="h5" component="h2" color="inherit">
+                <Typography variant="h5" component="h2">
                   {t('pmsg_gookaiju_title_intro1')}
                 </Typography>
-                <Typography variant="h5" component="h2" color="inherit">
+                <Typography variant="h5" component="h2">
                   {t('pmsg_gookaiju_title_intro2')}
                 </Typography>
                 <Button component={GettingNav} className={classes.button} variant="outlined" color="primary">

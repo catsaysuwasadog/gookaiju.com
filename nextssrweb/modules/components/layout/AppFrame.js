@@ -67,7 +67,7 @@ class AppFrame extends React.Component {
       <PageTitle t={t}>
         {title => {
           // eslint-disable-next-line no-console
-          console.log(`Layout + AppFrame + PageTitle ${title}......`);
+          console.log(`Layout - AppFrame + PageTitle ${title}......`);
           return (
             <div className={classes.root}>
               <NProgressBar />
